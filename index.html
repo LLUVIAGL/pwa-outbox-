@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PWA Outbox & Background Sync</title>
+  <!-- Rutas relativas obligatorias para GitHub Pages -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Patrón Outbox + Background Sync</h1>
+    <div id="estado-red" class="badge">Verificando conexión...</div>
+
+    <form id="form-tarea" class="card">
+      <h2>Nuevo Registro (POST)</h2>
+      <input type="text" id="titulo" placeholder="Título de la actividad" required>
+      <textarea id="descripcion" placeholder="Detalle o notas..." required></textarea>
+      <button type="submit">Enviar al Servidor</button>
+    </form>
+
+    <section class="card">
+      <div class="header-outbox">
+        <h2>Cola Outbox (IndexedDB)</h2>
+        <div>
+          <button id="btn-sincronizar" type="button" class="btn-sec">Forzar Sync</button>
+          <button id="btn-purgar" type="button" class="btn-danger">Purgar Cola</button>
+        </div>
+      </div>
+      <ul id="lista-outbox"></ul>
+    </section>
+  </main>
+
+  <!-- Cargar primero el helper de IndexedDB y luego app.js -->
+  <script src="./db-helper.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
